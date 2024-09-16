@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Everylane",
+    "subtitle": "Empowering Small Businesses with Professional Websites",
+    "backgroundImage": "/images/header-bg-everylane.jpg",
+    "navigation": [
+      { "label": "Home", "href": "/" },
+      { "label": "Templates", "href": "/templates" },
+      { "label": "Pricing", "href": "/pricing" },
+      { "label": "Contact", "href": "/contact" }
+    ]
+  },
+  "content": {
+    "sections": [
+      {
+        "type": "hero",
+        "heading": "Launch Your Website in Minutes",
+        "subheading": "Everylane makes it easy to create professional, SEO-optimized websites.",
+        "backgroundImage": "/images/hero-everylane.jpg"
+      },
+      {
+        "type": "about",
+        "heading": "About Us",
+        "content": "Everylane is designed to help small businesses, freelancers, and individuals create high-quality websites without the need for coding."
+      },
+      {
+        "type": "services",
+        "heading": "Our Services",
+        "servicesList": [
+          { "title": "Website Templates", "description": "Choose from a variety of professionally designed templates." },
+          { "title": "AI-Driven SEO", "description": "Boost your website's visibility with our AI-powered SEO tools." }
+        ]
+      },
+      {
+        "type": "clients",
+        "heading": "What Our Clients Say",
+        "clients": [
+          { "name": "John Doe", "business": "John's Bakery", "quote": "Everylane helped me launch a professional website in no time!" },
+          { "name": "Sarah Smith", "business": "Smith Consulting", "quote": "The templates were perfect for my business. Customization was easy!" }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "email": "support@everylane.com",
+    "phone": "+1-800-123-4567",
+    "address": "1234 Business St, Suite 100, San Francisco, CA 94105"
+  },
+  "footer": {
+    "text": "© 2024 Everylane. All rights reserved.",
+    "socialLinks": {
+      "facebook": "https://facebook.com/everylane",
+      "twitter": "https://twitter.com/everylane",
+      "linkedin": "https://linkedin.com/company/everylane"
+    }
+  },
+  "theme": {
+    "primaryColor": "#0044cc",
+    "secondaryColor": "#ffaa00",
+    "fontFamily": "Roboto, Sans-serif"
+  }
+}
