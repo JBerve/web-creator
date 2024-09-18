@@ -140,11 +140,14 @@
     "address": "1234 Business St, Suite 100, San Francisco, CA 94105"
   },
   "footer": {
+    "showSubscription": true,
+    "subscriptionText": "¡Suscríbete para recibir contenido exclusivo y las últimas noticias!",
     "text": "© 2024 Everylane. All rights reserved.",
     "socialLinks": {
       "facebook": "https://facebook.com/everylane",
       "twitter": "https://twitter.com/everylane",
-      "linkedin": "https://linkedin.com/company/everylane"
+      "linkedin": "https://linkedin.com/company/everylane",
+      "instagram": "https://instagram.com/company/everylane"
     }
   },
   "theme": {

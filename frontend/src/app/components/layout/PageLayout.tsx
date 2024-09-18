@@ -1,7 +1,6 @@
-import TopBar from 'src/app/components/common/TopBar';
-import Header from 'src/app/components/layout/Header';
-import Footer from 'src/app/components/layout/Footer';
-import { ReactNode } from 'react';
+import TopBar from 'components/layout/topBar/TopBar';
+import Header from 'components/layout/header/Header';
+import Footer from 'components/layout/footer/Footer';
 import {HeaderConfig, FooterConfig, ThemeConfig, NavigationLink, TopBarConfig} from '@/app/configs/configTypes';
 
 interface PageLayoutProps {
@@ -10,7 +9,7 @@ interface PageLayoutProps {
     theme: ThemeConfig;
     navigationLinks: NavigationLink[];
     topBarConfig?: TopBarConfig;
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 const PageLayout = ({
@@ -34,7 +33,11 @@ const PageLayout = ({
             <main className="flex-grow">
                 <div className="max-w-screen-xl mx-auto px-4 py-8">{children}</div>
             </main>
-            <Footer {...footer} theme={theme} />
+            <Footer
+                footer={footer}
+                theme={theme}
+                navigationLinks={navigationLinks}
+            />
         </div>
     );
 };

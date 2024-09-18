@@ -106,6 +106,8 @@ export interface ContactInfo {
 export interface FooterConfig {
     text: string;
     socialLinks: SocialLinks;
+    showSubscription?: boolean;
+    subscriptionText?: string;
 }
 
 export interface SocialLinks {

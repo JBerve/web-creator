@@ -1,8 +1,7 @@
 import { getPageConfig, getGlobalConfig } from '@/app/configs/configProvider';
 import PageLayout from '@/app/components/layout/PageLayout';
-import DynamicSection from '@/app/components/DynamicSection';
+import DynamicSection from 'components/sections/DynamicSection';
 import SEO from "components/SEO";
-import topBar from "components/common/TopBar";
 
 export default async function DynamicPage({ params }: { params: { slug: string } }) {
     const pageData = getPageConfig(params.slug);
@@ -12,13 +11,17 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
     function capitalizeSlug(slug: string): string {
         if (slug === 'home') return 'Home';
-        return slug.charAt(0).toUpperCase() + slug.slice(1);
+        return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase();
     }
 
-    const navigationLinks = Object.keys(pages).map((slug) => ({
-        title: capitalizeSlug(slug),
-        href: slug === 'home' ? '/' : `/${slug}`,
-    }));
+    const showContactButton = topBar?.showContactButton || false;
+    
+    const navigationLinks = Object.keys(pages)
+        .filter((slug) => !(slug.toLowerCase() === 'contact' && showContactButton))
+        .map((slug) => ({
+            title: capitalizeSlug(slug),
+            href: slug.toLowerCase() === 'home' ? '/' : `/${slug.toLowerCase()}`,
+        }));
     
     return (
         <>
