@@ -1,40 +1,18 @@
-import config from './config.json';
+import configData from './config.json';
+import { Config, PageConfig } from './configTypes';
 
-export interface Config {
-    header: {
-        title: string;
-        subtitle: string;
-        backgroundImage: string;
-        navigation: Array<{ label: string; href: string }>;
-    };
-    content: {
-        sections: Array<{
-            type: string;
-            heading?: string;
-            content?: string;
-            servicesList?: Array<{ title: string; description: string }>;
-            backgroundImage?: string;
-        }>;
-    };
-    contact: {
-        email: string;
-        phone: string;
-    };
-    footer: {
-        text: string;
-        socialLinks: {
-            facebook: string;
-            twitter: string;
-            linkedin: string;
-        };
-    };
-    theme: {
-        primaryColor: string;
-        secondaryColor: string;
-        fontFamily: string;
-    };
-}
+const config: Config = configData as Config;
 
-export const getConfig = (): Config => {
-    return config; 
+export const getPageConfig = (pageKey: string): PageConfig => {
+    const pageConfig = config.pages[pageKey];
+
+    if (!pageConfig) {
+        throw new Error(`Page config for "${pageKey}" not found.`);
+    }
+
+    return pageConfig;
+};
+
+export const getGlobalConfig = () => {
+    return config;
 };

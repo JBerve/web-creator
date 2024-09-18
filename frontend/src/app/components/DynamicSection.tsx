@@ -1,47 +1,39 @@
-import React from 'react';
-import ContentBlock from './ContentBlock';
-import ClientBlock from './ClientBlock'; 
+import React, { Suspense, lazy } from 'react';
+import { Section, SectionType, ThemeConfig } from '@/app/configs/configTypes';
 
-interface Section {
-    type: string;
-    heading?: string;
-    subheading?: string;
-    content?: string;
-    servicesList?: Array<{ title: string; description: string }>;
-    clients?: Array<{ name: string; business: string; quote: string }>; 
-    backgroundImage?: string;
-}
+const ContentBlock = lazy(() => import('./ContentBlock'));
+const ClientBlock = lazy(() => import('./ClientBlock'));
+const ContactFormBlock = lazy(() => import('./ContactFormBlock'));
+
+
+const sectionComponentMap: Partial<Record<SectionType, React.LazyExoticComponent<React.FC<any>>>> = {
+    [SectionType.About]: ContentBlock,
+    [SectionType.Services]: ContentBlock,
+    [SectionType.Clients]: ClientBlock,
+    [SectionType.Text]: ContentBlock,
+    [SectionType.ContactForm]: ContactFormBlock
+};
 
 interface DynamicSectionProps {
     sections: Section[];
+    theme: ThemeConfig;
 }
 
-const DynamicSection: React.FC<DynamicSectionProps> = ({ sections }) => {
+const DynamicSection: React.FC<DynamicSectionProps> = ({ sections, theme }) => {
     return (
         <div className="w-full max-w-screen-xl mx-auto px-4">
-            {sections.map((section, index) => {
-                switch (section.type) {
-                    case 'clients':
-                        return (
-                            <ClientBlock
-                                key={index}
-                                heading={section.heading}
-                                clients={section.clients} 
-                            />
-                        );
-                    default:
-                        return (
-                            <ContentBlock
-                                key={index}
-                                heading={section.heading}
-                                subheading={section.subheading}
-                                content={section.content}
-                                servicesList={section.servicesList}
-                                backgroundImage={section.backgroundImage}
-                            />
-                        );
-                }
-            })}
+            <Suspense fallback={<div>Loading...</div>}>
+                {sections.map((section, index) => {
+                    const SectionComponent = sectionComponentMap[section.type];
+                    if (!SectionComponent) {
+                        console.warn(`Unknown section type: ${section.type}`);
+                        return null;
+                    }
+                    return (
+                        <SectionComponent key={index} {...section} theme={theme} />
+                    );
+                })}
+            </Suspense>
         </div>
     );
 };
