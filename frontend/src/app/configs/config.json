@@ -2,44 +2,137 @@
   "header": {
     "title": "Everylane",
     "subtitle": "Empowering Small Businesses with Professional Websites",
-    "backgroundImage": "/images/header-bg-everylane.jpg",
-    "navigation": [
-      { "label": "Home", "href": "/" },
-      { "label": "Templates", "href": "/templates" },
-      { "label": "Pricing", "href": "/pricing" },
-      { "label": "Contact", "href": "/contact" }
-    ]
+    "backgroundImage": "/images/header-bg-everylane.jpg"
   },
-  "content": {
-    "sections": [
-      {
-        "type": "hero",
-        "heading": "Launch Your Website in Minutes",
-        "subheading": "Everylane makes it easy to create professional, SEO-optimized websites.",
+  "topBar": {
+    "showContactButton": true,
+    "contactButtonText": "Contact Us"
+  },
+  "pages": {
+    "home": {
+      "header": {
+        "title": "Launch Your Website in Minutes",
+        "subtitle": "Everylane makes it easy to create professional, SEO-optimized websites.",
         "backgroundImage": "/images/hero-everylane.jpg"
       },
-      {
-        "type": "about",
-        "heading": "About Us",
-        "content": "Everylane is designed to help small businesses, freelancers, and individuals create high-quality websites without the need for coding."
-      },
-      {
-        "type": "services",
-        "heading": "Our Services",
-        "servicesList": [
-          { "title": "Website Templates", "description": "Choose from a variety of professionally designed templates." },
-          { "title": "AI-Driven SEO", "description": "Boost your website's visibility with our AI-powered SEO tools." }
-        ]
-      },
-      {
-        "type": "clients",
-        "heading": "What Our Clients Say",
-        "clients": [
-          { "name": "John Doe", "business": "John's Bakery", "quote": "Everylane helped me launch a professional website in no time!" },
-          { "name": "Sarah Smith", "business": "Smith Consulting", "quote": "The templates were perfect for my business. Customization was easy!" }
+      "content": {
+        "sections": [
+          {
+            "type": "about",
+            "heading": "About Us",
+            "content": "Everylane is designed to help small businesses, freelancers, and individuals create high-quality websites without the need for coding."
+          },
+          {
+            "type": "services",
+            "heading": "Our Services",
+            "servicesList": [
+              { "title": "Website Templates", "description": "Choose from a variety of professionally designed templates." },
+              { "title": "AI-Driven SEO", "description": "Boost your website's visibility with our AI-powered SEO tools." }
+            ]
+          },
+          {
+            "type": "clients",
+            "heading": "What Our Clients Say",
+            "clients": [
+              { "name": "John Doe", "business": "John's Bakery", "quote": "Everylane helped me launch a professional website in no time!" },
+              { "name": "Sarah Smith", "business": "Smith Consulting", "quote": "The templates were perfect for my business. Customization was easy!" }
+            ]
+          }
         ]
       }
-    ]
+    },
+    "about": {
+      "header": {
+        "title": "About Everylane",
+        "subtitle": "Learn more about our mission and how we help businesses thrive.",
+        "backgroundImage": "/images/about-bg.jpg"
+      },
+      "content": {
+        "sections": [
+          {
+            "type": "text",
+            "heading": "Our Story",
+            "content": "Everylane was founded with the mission to empower small businesses to establish their online presence quickly and efficiently."
+          }
+        ]
+      }
+    },
+
+    "services": {
+      "header": {
+        "title": "What we offer",
+        "subtitle": "Learn more about our services and how we can help you thrive.",
+        "backgroundImage": "/images/about-bg.jpg"
+      },
+      "content": {
+        "sections": [
+          {
+            "type": "text",
+            "heading": "Services",
+            "content": "Everylane was founded with the mission to empower small businesses to establish their online presence quickly and efficiently."
+          }
+        ]
+      }
+    },
+    "clients": {
+      "header": {
+        "title": "Our Clients",
+        "subtitle": "Hear what our clients have to say",
+        "backgroundImage": "/images/clients-bg.jpg"
+      },
+      "content": {
+        "sections": [
+          {
+            "type": "clients",
+            "heading": "Testimonials",
+            "clients": [
+              { "name": "Alice Johnson", "business": "Alice's Art", "quote": "Everylane transformed my online presence!" },
+              { "name": "Bob Williams", "business": "Williams Tech", "quote": "Our website traffic increased by 200%." }
+            ]
+          }
+        ]
+      }
+    },
+    "faq": {
+      "header": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to common questions",
+        "backgroundImage": "/images/faq-bg.jpg"
+      },
+      "content": {
+        "sections": [
+          {
+            "type": "faq",
+            "heading": "FAQs",
+            "faqs": [
+              { "question": "How do I sign up?", "answer": "Click the sign-up button and fill out the form." },
+              { "question": "What payment methods do you accept?", "answer": "We accept all major credit cards." }
+            ]
+          }
+        ]
+      }
+    },
+    "contact": {
+      "navTitle": "Contact",
+      "header": {
+        "title": "Get in Touch",
+        "subtitle": "We'd love to hear from you",
+        "backgroundImage": "/images/contact-bg.jpg"
+      },
+      "content": {
+        "sections": [
+          {
+            "type": "text",
+            "heading": "Contact Us",
+            "content": "Feel free to reach out via email or phone. We're here to help!"
+          },
+          {
+            "type": "contactForm",
+            "heading": "Send Us a Message"
+          }
+        ]
+      }
+    }
   },
   "contact": {
     "email": "support@everylane.com",
@@ -47,16 +140,20 @@
     "address": "1234 Business St, Suite 100, San Francisco, CA 94105"
   },
   "footer": {
+    "showSubscription": true,
+    "subscriptionText": "¡Suscríbete para recibir contenido exclusivo y las últimas noticias!",
     "text": "© 2024 Everylane. All rights reserved.",
     "socialLinks": {
       "facebook": "https://facebook.com/everylane",
       "twitter": "https://twitter.com/everylane",
-      "linkedin": "https://linkedin.com/company/everylane"
+      "linkedin": "https://linkedin.com/company/everylane",
+      "instagram": "https://instagram.com/company/everylane"
     }
   },
   "theme": {
-    "primaryColor": "#0044cc",
-    "secondaryColor": "#ffaa00",
+    "primaryColor": "#436E67",
+    "secondaryColor": "#a6b9b5",
+    "textColor": "#5f6c76",
     "fontFamily": "Roboto, Sans-serif"
   }
 }

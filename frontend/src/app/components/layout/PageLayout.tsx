@@ -1,37 +1,43 @@
-import TopBar from "components/TopBar";
-import Header from 'components/layout/Header';
-import Footer from 'components/layout/Footer';
-import { ReactNode } from 'react';
+import TopBar from 'components/layout/topBar/TopBar';
+import Header from 'components/layout/header/Header';
+import Footer from 'components/layout/footer/Footer';
+import {HeaderConfig, FooterConfig, ThemeConfig, NavigationLink, TopBarConfig} from '@/app/configs/configTypes';
 
 interface PageLayoutProps {
-    header: {
-        title: string;
-        subtitle: string;
-        backgroundImage: string;
-        navigation: Array<{ label: string; href: string }>;
-    };
-    footer: {
-        text: string;
-    };
-    children: ReactNode;
+    header: HeaderConfig;
+    footer: FooterConfig;
+    theme: ThemeConfig;
+    navigationLinks: NavigationLink[];
+    topBarConfig?: TopBarConfig;
+    children: React.ReactNode;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ header, footer, children }) => {
+const PageLayout = ({
+                        header,
+                        footer,
+                        theme,
+                        navigationLinks,
+                        topBarConfig,
+                        children,
+                    }: PageLayoutProps) => {
     return (
-        <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
-            <TopBar clientName="everylane" />
-            <Header
-                title={header.title}
-                subtitle={header.subtitle}
-                backgroundImage={header.backgroundImage}
-                navigation={header.navigation}
+        <div className="min-h-screen flex flex-col">
+            <TopBar
+                clientName="Everylane"
+                theme={theme}
+                navigationLinks={navigationLinks}
+                showContactButton={topBarConfig?.showContactButton}
+                contactButtonText={topBarConfig?.contactButtonText}
             />
-            <main className="flex-1">
-                <div className="w-full mx-auto flex flex-col gap-8 ">
-                    {children}
-                </div>
+            <Header {...header} theme={theme} />
+            <main className="flex-grow">
+                <div className="max-w-screen-xl mx-auto px-4 py-8">{children}</div>
             </main>
-            <Footer text={footer.text} />
+            <Footer
+                footer={footer}
+                theme={theme}
+                navigationLinks={navigationLinks}
+            />
         </div>
     );
 };
