@@ -15,7 +15,15 @@ const PageSchema = new Schema<PageDocument>({
         backgroundImage: { type: String, required: true },
     },
     content: {
-        sections: { type: Array, required: true },
+        sections: {
+            type: [
+                {
+                    title: { type: String, required: true },
+                    text: { type: String, required: true },
+                },
+            ],
+            required: true,
+        },
     },
 });
 
@@ -29,22 +37,20 @@ export class PageRepository implements IPageRepository {
     }
 
     async getAllPages(): Promise<Page[]> {
-        return await PageModel.find().lean().exec();
+        const pages = await PageModel.find().exec();
+        return pages.map((pageDoc) => pageDoc.toObject());
     }
 
-    async createPage(page: Page): Promise<Page> {
-        const newPage = new PageModel(page);
-        return await newPage.save();
+    async createPage(page: Page): Promise<void> {
+        const pageModel = new PageModel(page);
+        await pageModel.save();
     }
 
-    async updatePage(slug: string, page: Partial<Page>): Promise<Page | null> {
-        return await PageModel.findOneAndUpdate({ slug }, page, { new: true })
-            .lean()
-            .exec();
+    async updatePage(slug: string, updatedPage: Partial<Page>): Promise<void> {
+        await PageModel.findOneAndUpdate({ slug }, updatedPage, { new: true }).exec();
     }
 
-    async deletePage(slug: string): Promise<boolean> {
-        const result = await PageModel.deleteOne({ slug }).exec();
-        return result.deletedCount === 1;
+    async deletePage(slug: string): Promise<void> {
+        await PageModel.findOneAndDelete({ slug }).exec();
     }
 }
